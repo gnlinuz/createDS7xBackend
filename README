@@ -1,7 +1,13 @@
-Create new backend with base-dn and then create the default nessesary indexes. 
-Call the script with createBaseDn argument to create base-dn, call the script without arguments, this creates only backend.
-Base-dn is only needed on the first server (base-dn will be replicated to other servers after successfully created on the first one)
-Change any settings at the top of the script to meet your installation needs # settings.
+Create new backend with base-dn and creating the default nessesary indexes. 
+Call the script with createBaseDn argument to additionally create base-dn, call the script without arguments, 
+this will create only backend and indexes.
+Base-dn is only needed on the first server (base-dn will be replicated to other servers after successfully created on the first one).
+
+Change any settings at the top of the script to meet your installation needs section # settings.
 Besides the creation of the backend the script will create the default indexes with default values.
-If needed change the index values in section # settings
-enjoy
+The default index type will be equality with default index-entry-limit:4000.
+In the end, the script rebuilds each index separately.
+You can add or remove indexes to be created by editting the script in section # settings
+INDEXES=("cn" "mail" "ds-certificate-subject-dn" "ds-certificate-fingerprint" "uid")
+Also you can change the type of index in INDEXTYPE=equality and INDEXENTRYLIMIT=4000
+enjoy!
