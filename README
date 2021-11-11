@@ -1,0 +1,7 @@
+Create new backend with base-dn and then create the default nessesary indexes. 
+Call the script with createBaseDn argument to create base-dn, call the script without arguments, this creates only backend.
+Base-dn is only needed on the first server (base-dn will be replicated to other servers after successfully created on the first one)
+Change any settings at the top of the script to meet your installation needs # settings.
+Besides the creation of the backend the script will create the default indexes with default values.
+If needed change the index values in section # settings
+enjoy

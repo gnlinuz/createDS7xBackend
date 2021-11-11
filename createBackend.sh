@@ -27,8 +27,10 @@ BACKENDNAME=exampleCyBackend
 TYPE=je
 BASEDN=dc=example,dc=cy
 DC=example
-# add or remove indexes to be created, index-type:equality
-# if other type of indexes needed better add a new loop
+INDEXTYPE=equality
+INDEXENTRYLIMIT=4000
+#
+# add or remove indexes to be created
 #
 INDEXES=("cn" "mail" "ds-certificate-subject-dn" "ds-certificate-fingerprint" "uid")
 
@@ -97,7 +99,8 @@ for i in ${INDEXES[@]}; do
   printf "creting $i index..."
   $OPENDJ/bin/./dsconfig create-backend-index \
   --backend-name $BACKENDNAME \
-  --set index-type:equality \
+  --set index-type:$INDEXTYPE \
+  --set index-entry-limit:$INDEXENTRYLIMIT \
   --type generic \
   --index-name $i \
   --hostname $FQDN \
